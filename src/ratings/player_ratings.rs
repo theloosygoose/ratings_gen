@@ -32,7 +32,6 @@ pub struct Ratings {
 
 }
 
-
 impl Ratings {
     pub fn gen_rand() -> Ratings {
 
@@ -84,28 +83,28 @@ impl Ratings {
 
 
         return Ratings{
-            strength: strength,
-            fluidity: fluidity,
-            burst: burst,
-            speed: speed,
-            height: height,
-            wingspan: wingspan,
+            strength,
+            fluidity,
+            burst,
+            speed,
+            height,
+            wingspan,
         //Offense_Defense Ratings
-            off_awareness: off_awareness,
-            def_awareness: def_awareness,
-            shot_form: shot_form,
-            touch: touch,
-            pass_accuracy: pass_accuracy,
-            ball_handling: ball_handling,
-            sliding: sliding,
-            hands: hands,
+            off_awareness,
+            def_awareness,
+            shot_form, 
+            touch, 
+            pass_accuracy,
+            ball_handling,
+            sliding,
+            hands,
         //Personality
-            work_ethic: work_ethic,
-            intelligence: intelligence,
-            creativity: creativity,
-            adaptability: adaptability,
-            loyalty: loyalty,
-            dog_factor: dog_factor,
+            work_ethic,
+            intelligence,
+            creativity,
+            adaptability,
+            loyalty,
+            dog_factor,
         };
     }
 }
