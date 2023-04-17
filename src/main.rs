@@ -17,6 +17,7 @@ fn main() {
     println!("Ratings:: {:#?}", ratings);
     println!("Height:: {:#?}", ratings.height);
     println!("Athleticism Overall:: {:#?}", physical_overall);
+
     println!("Offense Overall:: {:#?}", offense_overall);
 
     println!("Skills:: {:#?}", skills);
