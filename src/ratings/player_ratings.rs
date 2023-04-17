@@ -33,7 +33,7 @@ pub struct Ratings {
 }
 
 impl Ratings {
-    pub fn gen_rand() -> Ratings {
+    pub fn gen() -> Ratings {
 
         //Generate Height and Length Derivitive
         let height = generate_rating(MEAN_RTG, MEAN_STD_DEV);
