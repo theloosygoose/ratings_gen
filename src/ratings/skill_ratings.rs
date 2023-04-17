@@ -1,74 +1,81 @@
-use crate::generators::constants;
-use crate::generators::gen_ratings;
-use crate::ratings::player_ratings::Ratings;
+use super::player_ratings::Ratings;
 
 
-
+#[derive(Debug)]
 pub struct Skills {
-    on_ball_adv_creation: u16,
-    off_ball_adv_creation: u16,
+    creation_off_ball: u16,
+    creation_on_ball: u16,
 
-    post_shot:u16,
-    inside_shot: u16,
-    mid_shot: u16,
-    three_shot: u16,
+    shot_movement: u16,
 
-    movement_shooting: u16,
-    pull_up_shooting: u16,
+    shot_three: u16,
+    shot_mid: u16,
+    shot_close: u16,
 
-    finishing: u16,
+    rim_finishing: u16,
+    
+    foul_drawing: u16,
 
-    passing_vision: u16,
-    passing_iq: u16,
-    passing_creativity: u16,
+    pass_iq: u16,
+    pass_creativity: u16,
+    pass_vision: u16,
 
+    defense_on_ball: u16,
+    defense_off_ball: u16,
 
-    on_ball_defense: u16,
-    help_defense: u16,
-    block: u16,
-    steal:u16,
-
-    rebounding_iq:u16,
+    defense_steal: u16,
+    defense_block: u16,
 
     hustle: u16,
-    endurance:u16,
 }
 
-impl Skills{
-    fn calc(ratings:Ratings) -> Skills {
-        
+impl Skills {
+    pub fn gen (ratings: &Ratings) -> Skills {
+        let creation_off_ball = (ratings.speed + ratings.burst + ratings.intelligence + ratings.off_awareness + ratings.fluidity)/(5); 
 
-        let on_ball_adv_creation = (ratings.speed * 5) + (ratings.burst * 3) + (ratings.fluidity * 4 ) ;
+        let creation_on_ball = (ratings.speed + ratings.burst + ratings.strength + ratings.creativity + ratings.intelligence  + ratings.fluidity + ratings.ball_handling) / (7);
 
+        let shot_movement  = (ratings.fluidity + ratings.shot_form + ratings.touch + ratings.strength) / (4);
+        let shot_three = (ratings.shot_form + ratings.touch) / (2);
+        let shot_mid = (ratings.shot_form + ratings.touch) / (2); 
+        let shot_close = (ratings.touch + ratings.strength + ratings.burst + ratings.height) / (4);
+        let rim_finishing = (ratings.burst + ratings.fluidity + ratings.strength + ratings.touch + ratings.creativity) / (5);
 
-
-        return Skills{
-            on_ball_adv_creation,
-            off_ball_adv_creation,
-
-            post_shot,
-            inside_shot,
-            mid_shot,
-            three_shot,
-
-            movement_shooting,
-            pull_up_shooting,
-
-            finishing,
-            passing_vision,
-            passing_iq,
-            passing_creativity,
+        let foul_drawing = (ratings.strength + ratings.creativity + ratings.intelligence ) / (3);
 
 
-            on_ball_defense,
-            help_defense,
-            block,
-            steal,
+        let pass_iq = (ratings.intelligence + ratings.off_awareness) / (2);
+        let pass_creativity = (ratings.creativity + ratings.intelligence + ratings.pass_accuracy + ratings.off_awareness) / (4);
+        let pass_vision = (ratings.height + ratings.off_awareness + ratings.intelligence) / (3);
 
+
+        let defense_on_ball = (ratings.sliding + ratings.strength + ratings.wingspan + ratings.burst + ratings.intelligence + ratings.hands) / (6);
+        let defense_off_ball = (ratings.def_awareness + ratings.off_awareness + ratings.intelligence + ratings.speed + ratings.burst + ratings.wingspan) / (6);
+
+        let defense_steal = (ratings.hands + ratings.intelligence) / (2);
+        let defense_block = (ratings.height + ratings.burst + ratings.wingspan) / (3);
+
+
+
+        let hustle = (ratings.dog_factor + ratings.loyalty + ratings.hands) / (3);
+
+        return Skills {
+            creation_off_ball,
+            creation_on_ball,
+            shot_movement,
+            shot_three,
+            shot_mid,
+            shot_close,
+            rim_finishing,
+            foul_drawing,
+            pass_iq,
+            pass_creativity,
+            pass_vision,
+            defense_on_ball,
+            defense_off_ball,
+            defense_steal,
+            defense_block,
             hustle,
-            endurance,
-        };
-
+        }
     }
 }
-
