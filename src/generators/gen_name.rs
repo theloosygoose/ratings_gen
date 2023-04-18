@@ -1,19 +1,48 @@
-use std::error::Error;
-use std::fs;
-use csv::Reader;
+use rand_derive2::RandGen;
+use strum::EnumString;
+use std::fmt;
 
-pub fn gen_name() -> Result<(), Box<dyn Error>> {
-    
-    let csv_string:String = fs::read_to_string("../../data/nationality.txt")?.parse()?;
+#[derive(Debug, RandGen, EnumString)]
+enum FirstNameAmerican {
+    Ryan, Mike, Jalen, Jaden,
+    Seth, Stephen, Cam, James,
+    Tobias, Henry, Paul, Anthony,
+    Spencer, Royce, Joe, Nick,
+    Joel, Michael, Mikal, Tyrese,
+    Dyson, Samson, Webster, Talon,
+    Morley, Chad, Elliot, Doug,
+    Orrell, Cosmo,
+}
 
-    println!("{:#?}", csv_string);
-    
-    let mut rdr = Reader::from_reader(csv_string.as_bytes());
-
-    for result in rdr.records() {
-        let record = result?;
-        println!("{:?}", record);
+#[derive(Debug, RandGen, EnumString)]
+enum LastNameAmerican {
+    Johnson, Williams, Brown, Jones,
+    Garcia, Miller, Davis, Rodriguez,
+    Martinez, Hernandez, Lopez, Gonzales,
+    Wilson, Anderson, Thomas, Taylor,
+    Moore, Jackson, Martin, Lee,
+    Indie, Howard, Shirley, Westbrook,
+    Rowe, Barclay, Bannister, Hartell,
+    Reed, Beckham, Warrick, Lyndon,
+    Tucker, Denzil,
+}
+macro_rules! impl_T {
+    (for $($t:ty),+) => {
+        $(impl fmt::Display for $t {
+            fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result{
+                write!(f, "{:?}", self)
+            }
+        })*
     }
+}
 
-    Ok(())
+impl_T!(for FirstNameAmerican, LastNameAmerican);
+
+
+pub fn gen_name(){
+
+    let first_name: FirstNameAmerican = rand::random();
+    let last_name: LastNameAmerican = rand::random();
+    
+    println!("{:?} {:?}", first_name, last_name);
 }

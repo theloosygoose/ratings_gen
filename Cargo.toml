@@ -8,5 +8,7 @@ edition = "2021"
 [dependencies]
 csv = "1.2.1"
 rand = "0.8.5"
+rand_derive2 = "0.1.18"
 rand_distr = "0.4.3"
 serde = "1.0.160"
+strum = {version = "0.24.1", features = ["derive"]}
