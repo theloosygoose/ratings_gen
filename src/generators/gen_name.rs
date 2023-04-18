@@ -1,8 +1,7 @@
 use rand_derive2::RandGen;
-use strum::EnumString;
-use std::fmt;
+use strum_macros::{EnumString, Display};
 
-#[derive(Debug, RandGen, EnumString)]
+#[derive(Debug, Display, RandGen, EnumString)]
 enum FirstNameAmerican {
     Ryan, Mike, Jalen, Jaden,
     Seth, Stephen, Cam, James,
@@ -14,7 +13,7 @@ enum FirstNameAmerican {
     Orrell, Cosmo,
 }
 
-#[derive(Debug, RandGen, EnumString)]
+#[derive(Debug, Display, RandGen, EnumString)]
 enum LastNameAmerican {
     Johnson, Williams, Brown, Jones,
     Garcia, Miller, Davis, Rodriguez,
@@ -26,23 +25,17 @@ enum LastNameAmerican {
     Reed, Beckham, Warrick, Lyndon,
     Tucker, Denzil,
 }
-macro_rules! impl_T {
-    (for $($t:ty),+) => {
-        $(impl fmt::Display for $t {
-            fn fmt(&self, f:&mut fmt::Formatter) -> fmt::Result{
-                write!(f, "{:?}", self)
-            }
-        })*
-    }
-}
-
-impl_T!(for FirstNameAmerican, LastNameAmerican);
 
 
-pub fn gen_name(){
+pub fn gen_name() -> String {
+    let mut name = String::new();
 
-    let first_name: FirstNameAmerican = rand::random();
-    let last_name: LastNameAmerican = rand::random();
-    
-    println!("{:?} {:?}", first_name, last_name);
+    let first_name:FirstNameAmerican = rand::random();
+    let last_name:LastNameAmerican = rand::random();
+
+    name.push_str(&first_name.to_string());
+    name.push(' ');
+    name.push_str(&last_name.to_string());
+
+    name 
 }

@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 use super::player_ratings::Ratings;
 
-
 #[derive(Debug)]
 pub struct Skills {
     creation_off_ball: u16,

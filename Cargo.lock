@@ -182,6 +182,7 @@ dependencies = [
  "rand_distr",
  "serde",
  "strum",
+ "strum_macros",
 ]
 
 [[package]]

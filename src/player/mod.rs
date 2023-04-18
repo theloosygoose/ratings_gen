@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+use crate::generators::gen_name::gen_name;
 use crate::ratings;
 
 
@@ -16,8 +17,8 @@ impl Player {
         let skills = ratings::skill_ratings::Skills::gen(&ratings);
 
         return Player {
-            name: "Player A".to_string(),
-            age: 19,
+            name: gen_name(),
+            age: 21,
             ratings,
             skills,
         }
