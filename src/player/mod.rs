@@ -14,10 +14,11 @@ pub struct Player {
 }
 
 impl Player {
-    
     pub fn gen() -> Player {
+        let mut rng  = thread_rng();
         let ratings = ratings::player_ratings::Ratings::gen();
         let skills = ratings::skill_ratings::Skills::gen(&ratings);
+
 
         let name_country = gen_name();
         let name = name_country.0;
@@ -26,7 +27,7 @@ impl Player {
         return Player {
             name,
             country,
-            age: thread_rng().gen_range(0..25),
+            age: thread_rng().gen_range(15..40),
             ratings,
             skills,
         }

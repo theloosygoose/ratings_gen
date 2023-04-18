@@ -3,7 +3,6 @@ use crate::generators::constants::{MEAN_RTG, MEAN_STD_DEV, WIDE_STD_DEV, NARROW_
 
 #[derive(Debug)]
 pub struct Ratings {
-
 //Physical Ratings
     pub strength: u16,
     pub fluidity: u16,
@@ -11,7 +10,6 @@ pub struct Ratings {
     pub speed: u16,
     pub height: u16,
     pub wingspan: u16,
-
 //Offense_Defense Ratings
     pub off_awareness: u16,
     pub def_awareness: u16,
@@ -21,7 +19,6 @@ pub struct Ratings {
     pub ball_handling: u16,
     pub sliding: u16,
     pub hands: u16,
-
 //Personality Ratings
     pub work_ethic: u16,
     pub intelligence: u16,
@@ -34,7 +31,6 @@ pub struct Ratings {
 
 impl Ratings {
     pub fn gen() -> Ratings {
-
         //Generate Height and Length Derivitive
         let height = generate_rating(MEAN_RTG, MEAN_STD_DEV);
         let wingspan = generate_rating(MEAN_RTG, MEAN_STD_DEV);
