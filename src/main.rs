@@ -10,8 +10,13 @@ pub mod team;
 
 
 fn main() {
-    let teams = Team::gen_teams();
+    
+    let mut teams = Team::gen_teams();
 
-    println!("{:?}", teams[1])
+    let team_1 = &mut teams[1];
+    println!("{:?}", team_1.players[0]);
+    
+    team_1.develop_team();
 
+    println!("{:?}", team_1.players[0]);
 }

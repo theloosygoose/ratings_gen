@@ -8,12 +8,12 @@ use crate::player::Player;
 #[derive(Debug)]
 #[allow(dead_code)]
 pub struct Team {
-    name: TeamName,
-    owner: String,
-    wins: u8,
-    losses: u8,
-    team_salary: i16,
-    players: Vec<Player>,
+    pub name: TeamName,
+    pub owner: String,
+    pub wins: u8,
+    pub losses: u8,
+    pub team_salary: i16,
+    pub players: Vec<Player>,
 }
 
 #[derive(Debug, Display, RandGen, EnumString, Clone, Copy)]
@@ -70,5 +70,13 @@ impl Team {
             n += 1;
         };
         return teams;
+    }
+
+    pub fn develop_team(&mut self){
+        
+        for player in &mut self.players {
+            player.develop();
+        }
+        
     }
 }

@@ -142,4 +142,99 @@ impl Skills {
             hustle,
         }
     }
+
+    pub fn update(&mut self, ratings: Ratings){
+        self.creation_off_ball = (
+            ratings.speed + 
+            ratings.burst + 
+            ratings.intelligence + 
+            ratings.off_awareness + 
+            ratings.fluidity)/(5); 
+
+        self.creation_on_ball = (
+            ratings.speed + 
+            ratings.burst + 
+            ratings.strength + 
+            ratings.creativity + 
+            ratings.intelligence + 
+            ratings.fluidity + 
+            ratings.ball_handling) / (7);
+
+
+        self.shot_movement  = (
+            ratings.fluidity + 
+            ratings.shot_form + 
+            ratings.touch + 
+            ratings.strength) / (4);
+        self.shot_three = (
+            ratings.shot_form + 
+            ratings.touch) / (2);
+        self.shot_mid = (
+            ratings.shot_form + 
+            ratings.touch) / (2); 
+        self.shot_close = (
+            ratings.touch + 
+            ratings.strength + 
+            ratings.burst + 
+            ratings.height) / (4);
+
+
+        self.rim_finishing = (
+            ratings.burst + 
+            ratings.fluidity + 
+            ratings.strength + 
+            ratings.touch + 
+            ratings.creativity) / (5);
+
+        self.foul_drawing = (
+            ratings.strength + 
+            ratings.creativity + 
+            ratings.intelligence ) / (3);
+
+
+        self.pass_iq = (
+            ratings.intelligence + 
+            ratings.off_awareness) / (2);
+        self.pass_creativity = (
+            ratings.creativity + 
+            ratings.intelligence + 
+            ratings.pass_accuracy + 
+            ratings.off_awareness) / (4);
+        self.pass_vision = (
+            ratings.height + 
+            ratings.off_awareness + 
+            ratings.intelligence) / (3);
+
+
+        self.defense_on_ball = (
+            ratings.sliding + 
+            ratings.strength + 
+            ratings.wingspan + 
+            ratings.burst + 
+            ratings.intelligence + 
+            ratings.hands) / (6);
+        self.defense_off_ball = (
+            ratings.def_awareness + 
+            ratings.off_awareness + 
+            ratings.intelligence + 
+            ratings.speed + 
+            ratings.burst + 
+            ratings.wingspan) / (6);
+
+        self.defense_steal = (
+            ratings.hands + 
+            ratings.intelligence) / (2);
+        self.defense_block = (
+            ratings.height + 
+            ratings.burst + 
+            ratings.wingspan) / (3);
+
+
+        self.hustle = (
+            ratings.dog_factor + 
+            ratings.loyalty + 
+            ratings.hands) / (3);
+
+        
+    }
 }
