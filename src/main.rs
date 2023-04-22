@@ -1,22 +1,20 @@
-use crate::team::teams::Team;
-
-// use crate::generators::gen_ratings::print_many_ratings;
-// use crate::generators::constants::{MEAN_RTG, MEAN_STD_DEV, WIDE_STD_DEV};
+use team::teams::Team;
 
 pub mod ratings;
 pub mod generators;
-pub mod player;
+pub mod people;
 pub mod team;
 
 
 fn main() {
-    
-    let mut teams = Team::gen_teams();
+    let mut teams: Vec<Team> = Team::gen_teams();
 
-    let team_1 = &mut teams[1];
-    println!("{:?}", team_1.players[0]);
-    
-    team_1.develop_team();
+    println!("Player #1 {:#?}", teams[0].players[0]); 
 
-    println!("{:?}", team_1.players[0]);
+    for team in teams.iter_mut(){
+        team.develop_team();
+    }
+
+    println!("Player #1 {:#?}", teams[0].players[0]);
+    
 }

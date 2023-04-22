@@ -1,7 +1,7 @@
 use strum_macros::{EnumString, Display};
 use rand::{distributions::{Distribution, Standard}, Rng};
 
-#[derive(Debug, Display, EnumString)]
+#[derive(Debug, Display, EnumString, Clone)]
 pub enum Country {
     UnitedStates, Canada, Cameroon,
     France, Australia, Germany,
