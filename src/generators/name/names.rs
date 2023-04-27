@@ -1,7 +1,8 @@
 use rand_derive2::RandGen;
+use serde::Deserialize;
 use strum_macros::{EnumString, Display};
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum FirstNameEnglish {
     Ryan, Mike, Jalen, Jaden,
     Seth, Stephen, Cam, James,
@@ -13,7 +14,7 @@ pub enum FirstNameEnglish {
     Orrell, Cosmo,
 }
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum LastNameEnglish {
     Johnson, Williams, Brown, Jones,
     Garcia, Miller, Davis, Rodriguez,
@@ -26,7 +27,7 @@ pub enum LastNameEnglish {
     Tucker, Denzil,
 }    
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum FirstNameAfrican{
     Emmanuel, Jermaine, Jalen,
     Amari, Deshawn, Odell,
@@ -65,7 +66,7 @@ pub enum FirstNameAfrican{
 }
 
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum LastNameAfrican {
     Mohamed, Ali, Ahmed,
     Ibrahim, Hassan, Diallo,
@@ -89,7 +90,7 @@ pub enum LastNameAfrican {
 }
 
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum FirstNameSlav{
     Alex, Nikita, George, Dima,
     Daniel, Adam, Sasha, Vlad,
@@ -119,7 +120,7 @@ pub enum FirstNameSlav{
 }
 
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum LastNameSlav{
     Barno, Ganus, Ivanov,
     Rosya, Smirnov, Volkov,
@@ -135,7 +136,7 @@ pub enum LastNameSlav{
 
 
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum FirstNameGerman{
     Lambart, Ekerd, Adel, Agustine,
     Kuno, Roswell, Roch, Wallache,
@@ -163,7 +164,7 @@ pub enum FirstNameGerman{
     Robert,
 }
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum LastNameGerman{
     Busch,Brenneman,Grunst,Knolle,
     Hengesbach,Morgenroth,Rubner,Huppert,
@@ -183,7 +184,7 @@ pub enum LastNameGerman{
     Scherz,Tretter,Trautner,
 }
 
-#[derive(Debug, Display, RandGen, EnumString, Clone)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Deserialize)]
 pub enum FirstNameFrench{
    Millard,Etie,Thomure,Mangin,
    Filiatrault,Polin,Houde,
@@ -205,7 +206,7 @@ pub enum FirstNameFrench{
    Leclere,Lafleche,Dargis,
    Pare,Vautrin,Carron,
 }
-#[derive(Debug, Display, RandGen, EnumString)]
+#[derive(Debug, Display, RandGen, EnumString, Deserialize)]
 pub enum LastNameFrench{
    Ulrich,Deveral,Herve,
    Raymund,Rust,Napoleon,

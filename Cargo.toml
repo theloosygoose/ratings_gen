@@ -13,4 +13,3 @@ rand_distr = "0.4.3"
 strum_macros = "0.24"
 strum = {version = "0.24", features=["derive"] }
 serde = {version = "1.0.160", features=["derive"]}
-

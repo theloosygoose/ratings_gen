@@ -1,5 +1,5 @@
 use rand_derive2::RandGen;
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 use strum_macros::{EnumString, Display};
 
 use crate::generators::constants::{ROSTER_SIZE, TEAMS_AMT};
@@ -7,7 +7,7 @@ use crate::generators::name::names::FirstNameEnglish;
 
 use crate::people::{Person, Job};
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[allow(dead_code)]
 pub struct Team {
     pub name: TeamName,
@@ -19,7 +19,7 @@ pub struct Team {
     pub players: Vec<Person>,
 }
 
-#[derive(Debug, Display, RandGen, EnumString, Clone, Copy, Serialize)]
+#[derive(Debug, Display, RandGen, EnumString, Clone, Copy, Serialize, Deserialize)]
 pub enum TeamName{
     Sixers, Bucks, Celtics,
     Cavaliers, Knicks, Nets,

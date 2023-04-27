@@ -6,7 +6,7 @@ pub mod scout;
 pub mod journalist;
 
 use rand::Rng;
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
 use crate::generators::id::generate_person_id;
 use crate::ratings::personality::Personality;
@@ -15,7 +15,7 @@ use crate::generators::name::country::Country;
 use crate::generators::name::gen_name::gen_name;
 
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Job {
     Coach(coach::Coach),
     Owner(owner::Owner),
@@ -24,13 +24,17 @@ pub enum Job {
     Scout(scout::Scout),
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Person {
     pub name: String,
     pub id: String,
+    
+    #[serde(flatten)]
     pub job: Job,
     pub country: Country,
     pub age: u16,
+
+    #[serde(flatten)]
     pub personality: Personality,
 }
 
@@ -63,7 +67,6 @@ impl Person {
 
     pub fn gen_owner() -> Person{
         todo!();
-        
     }
 
     pub fn gen_scout() -> Person {

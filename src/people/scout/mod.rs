@@ -1,9 +1,9 @@
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
-use crate::people::player::Player;
+use super::Person;
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Scout {
     bias: String,
-    players_scouted: Vec<Player>,
+    players_scouted: Vec<Person>,
 }

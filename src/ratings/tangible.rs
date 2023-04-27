@@ -1,10 +1,10 @@
 #![allow(dead_code)]
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
 use super::intangible::IntangibleRatings;
 use super::personality::Personality;
 
-#[derive(Debug, Clone, Copy, Serialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct TangibleRatings{
     creation_off_ball: u16,
     creation_on_ball: u16,

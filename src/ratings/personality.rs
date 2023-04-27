@@ -1,8 +1,8 @@
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
 use crate::generators::{gen_ratings::generate_rating, constants::{MEAN_RTG, MEAN_STD_DEV}};
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Personality {
     pub work_ethic: u16,
     pub intelligence: u16,
