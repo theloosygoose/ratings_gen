@@ -8,7 +8,7 @@ enum Reigon {
     TeamName(TeamName),
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Journalist {
     reigon: Reigon,
     sub_stack: String,
