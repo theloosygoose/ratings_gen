@@ -9,19 +9,21 @@ use rand::Rng;
 use serde::{Serialize, Deserialize};
 
 use crate::generators::id::generate_person_id;
-use crate::ratings::personality::Personality;
 use crate::generators::name::country::Country;
-
 use crate::generators::name::gen_name::gen_name;
+
+use crate::ratings::tangible::TangibleRatings;
+use crate::ratings::intangible::IntangibleRatings;
+use crate::ratings::personality::Personality;
 
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Job {
-    Coach(coach::Coach),
-    Owner(owner::Owner),
-    Player(player::Player),
-    Journalist(journalist::Journalist) ,
-    Scout(scout::Scout),
+    Coach,
+    Owner,
+    Player,
+    Journalist ,
+    Scout,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -31,21 +33,29 @@ pub struct Person {
     
     #[serde(flatten)]
     pub job: Job,
+    
     pub country: Country,
     pub age: u16,
 
     #[serde(flatten)]
     pub personality: Personality,
+
+    pub intangibles: IntangibleRatings,
+    pub tangibles: TangibleRatings,
 }
 
 
 impl Person {
     pub fn gen_player() -> Person {
         let (name, country) = gen_name();
-        let personality = Personality::gen();
         let age = rand::thread_rng().gen_range(16..35);
-        let job = Job::Player(player::Player::gen_ratings(&personality));
+        let job = Job::Player;
         let id = generate_person_id(&name, &country, &age);
+
+        let personality = Personality::gen();
+        
+        let intangibles = IntangibleRatings::gen();
+        let tangibles = TangibleRatings::gen(&intangibles, &personality);
 
         Person { 
             name, 
@@ -53,7 +63,10 @@ impl Person {
             job, 
             country, 
             age, 
-            personality 
+            personality,
+            intangibles,
+            tangibles,
+            
         }
     }
 
